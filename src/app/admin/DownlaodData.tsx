@@ -1,37 +1,29 @@
-import { deleteJSONFile, dowlaodJSONFile } from "@/utils/jsonFileHelper";
+"use client";
+
 import { Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
+import { saveAs } from "file-saver";
 
-const DownlaodData = () => {
-  const formAction = async () => {
-    "use server";
-    await dowlaodJSONFile("users.json");
-  };
+const DownloadData = ({ fileName }: { fileName: string }) => {
+  const [state, setState] = useState("Downlaod");
 
-  const deleteFormAction = async () => {
-    "use server";
-    await deleteJSONFile("users.json");
+  const onClick = async () => {
+    setState("Downloading...");
+    const res = await fetch("/api/getFile", {
+      headers: { fileName },
+    });
+    const { data } = await res.json();
+    const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+
+    saveAs(blob, fileName);
+    setState("Download");
   };
 
   return (
-    <section>
-      <h2>Download Section</h2>
-      <p>Status</p>
-      <div className="flex gap-1">
-        <form action={formAction}>
-          <Button type="submit">Genrate</Button>
-        </form>
-        <Button>
-          <a href="users.json" download>
-            Downlaod
-          </a>
-        </Button>
-        <form action={deleteFormAction}>
-          <Button type="submit">Delete</Button>
-        </form>
-      </div>
-    </section>
+    <Button onClick={onClick} fontSize={"xs"} size={"xs"}>
+      {state}
+    </Button>
   );
 };
 
-export default DownlaodData;
+export default DownloadData;

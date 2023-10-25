@@ -1,7 +1,9 @@
 "use server";
 
-import { appendJSONFile, readJSONFile } from "@/utils/jsonFileHelper";
-import { verifyUser } from "@/utils/getUser";
+import { getUser } from "@/utils/getUser";
+import { JSONFile } from "@/utils/jsonFileHelper";
+import { DATAFOLDER } from "@/utils/secretData";
+import { redirect } from "next/navigation";
 
 export const action = async (data: FormData) => {
   const shift = data.get("shift");
@@ -9,16 +11,20 @@ export const action = async (data: FormData) => {
   const date = data.get("date");
   const location = data.get("location");
 
-  const user = await verifyUser();
+  const user = await getUser();
+  if (!user) return;
 
   if (!(shift || type || date || location)) return false;
 
-  const path = process.env.DATAFOLDER + "calling-seva.txt";
-  await appendJSONFile(path, JSON.stringify({
+  const path = DATAFOLDER + "calling-seva.json";
+
+  JSONFile.write(DATAFOLDER + "calling-seva.json", {
     shift,
-    date,
     type,
+    date,
     location,
-    user_id: user && user.id,
-  }))
+    user_id: user.id,
+  });
+
+  redirect("/calling-seva");
 };

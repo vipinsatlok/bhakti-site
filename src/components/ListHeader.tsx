@@ -13,8 +13,9 @@ const ListHeader = ({ title, url }: IListHeader) => {
       <div className="flex justify-between">
         <h1>{title} List</h1>
         <Link href={url}>
-          
-          <Button size={"sm"}>ADD</Button>
+          <Button fontSize={"xs"} size={"sm"}>
+            +
+          </Button>
         </Link>
       </div>
     </div>

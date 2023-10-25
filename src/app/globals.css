@@ -10,8 +10,34 @@ h1 {
   @apply text-2xl font-bold mb-5;
 }
 
-
+select,
+input {
+  font-size: 12px;
+}
 
 h2 {
   @apply text-xl font-bold mb-4;
+}
+
+.list-main {
+  animation: Start ease;
+  animation-duration: 0.5s;
+}
+
+@keyframes Start {
+  0% {
+    transform: scale(3);
+    transform: rotate(50deg);
+    filter: blur(100);
+  }
+
+  80% {
+    transform: scale(1);
+    transform: rotate(0deg);
+    filter: blur(10);
+  }
+
+  100% {
+    filter: blur(0);
+  }
 }

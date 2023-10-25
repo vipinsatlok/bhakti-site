@@ -1,6 +1,6 @@
 "use client";
 
-import { ICallingFields } from "@/types/CallingSeva";
+import { ICallingData } from "@/types/CallingSeva";
 import { Button, Input, Select, Text } from "@chakra-ui/react";
 import React from "react";
 import { action } from "./action";
@@ -28,9 +28,6 @@ const CallingSevaAdd = () => {
         <div>
           <Button type="submit" width={"max-content"}>
             Add
-          </Button>
-          <Button marginLeft={"3"} width={"max-content"}>
-            Reset
           </Button>
         </div>
       </form>

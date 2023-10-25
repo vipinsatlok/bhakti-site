@@ -6,6 +6,8 @@ import UserCard from "./UserCard";
 import { Button, Select } from "@chakra-ui/react";
 import Link from "next/link";
 import { getDataFormat } from "@/utils/fetchData";
+import DownloadData from "./DownloadData";
+import { action } from "./action";
 
 const getAllUsers = async ({ role, currentPage = 1 }: ISearch) => {
   const users = await JSONFile.read<IUserData>(DATAFOLDER + "users.json");
@@ -37,11 +39,14 @@ const Users = async ({ params, searchParams }: TSearchParams) => {
     <div className="mt-5">
       <div className="flex justify-between">
         <h1>Users</h1>
-        <Link href={"/admin/users/add"}>
-          <Button fontSize={"xs"} size={"xs"}>
-            ADD
-          </Button>
-        </Link>
+        <div>
+          <DownloadData action={action} />
+          <Link className="ml-1" href={"/admin/users/add"}>
+            <Button fontSize={"xs"} size={"xs"}>
+              ADD
+            </Button>
+          </Link>
+        </div>
       </div>
       <div className="flex flex-col gap-2">
         {data.map((user) => (

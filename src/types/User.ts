@@ -4,5 +4,4 @@ export interface IUserData {
   password: string;
   email: string;
   role: "admin" | "user";
-  naamdanDate: string;
 }

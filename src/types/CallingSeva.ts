@@ -1,15 +1,17 @@
-export interface ICallingFields {
-  id?: string;
-  type: "video" | "audio" | "";
+export interface ICallingData{
+  user_id: string;
+  id: string;
+  type: "video" | "audio";
   date: string;
-  shift: "morning" | "noon" | "evening" | "night" | "";
+  shift: "morning" | "noon" | "evening" | "night";
   location: string;
+  index?: number;
 }
 
-export interface ICallingData {
-  currentPage: number;
-  totalPages: number;
-  data: ICallingFields[];
-}
+// export interface ICallingData {
+//   currentPage: number;
+//   totalPages: number;
+//   data: ICallingFields[];
+// }
 
 // export interface ICalling

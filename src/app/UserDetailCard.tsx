@@ -1,27 +1,18 @@
+import React from "react";
+import Link from "next/link";
 import { IUserData } from "@/types/User";
 import { Button } from "@chakra-ui/react";
-import { cookies } from "next/headers";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import React from "react";
+import { logoutAction } from "./action";
 
-const UserDetailCard = ({ name, naamdanDate, email, role }: IUserData) => {
-  const formAction = async () => {
-    "use server";
-    const cookieStore = cookies();
-    cookieStore.delete("auth");
-    cookieStore.delete("token");
-    redirect("/login");
-  };
-
+const UserDetailCard = ({ name, email, role }: IUserData) => {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col">
-        <span className="text-2xl font-bold">{name}</span>
+        <span className="text-2xl capitalize font-bold">{name}</span>
         <span className="text-gray-800 text-xs">{email}</span>
       </div>
       <div>
-        <form className="flex flex-col gap-1" action={formAction}>
+        <form className="flex flex-col gap-1" action={logoutAction}>
           <Button type="submit" size={"xs"}>
             Logout
           </Button>
