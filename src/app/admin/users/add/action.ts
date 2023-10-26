@@ -5,15 +5,14 @@ import { DATAFOLDER } from "@/utils/secretData";
 import { sendErrorInAction } from "@/utils/sendErrorInAction";
 import { redirect } from "next/navigation";
 
-export const action = async (prev: any, data: FormData) => {
+export const action = async (data: FormData) => {
   const name = data.get("name");
   const email = data.get("email");
   const password = data.get("password");
   const role = "user";
 
-  if (!(name || email || password))
-    return sendErrorInAction("all fields are required");
-  const isAdded = JSONFile.write(DATAFOLDER + "users.json", {
+  if (!(name || email || password)) return;
+  JSONFile.write(DATAFOLDER + "users.json", {
     name,
     email,
     password,

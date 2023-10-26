@@ -1,7 +1,7 @@
-import { readFile, writeFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 
-export const GET = async (req: NextRequest) => {
+export async function GET(req: NextRequest) {
   try {
     const fileName = req.headers.get("fileName");
     const file = await readFile(`src/data/${fileName}`, { encoding: "utf8" });
@@ -9,6 +9,6 @@ export const GET = async (req: NextRequest) => {
 
     return NextResponse.json({ data });
   } catch (error) {
-    return error;
+    return NextResponse.json({ error: JSON.stringify(error) });
   }
-};
+}

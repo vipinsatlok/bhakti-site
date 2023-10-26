@@ -6,7 +6,6 @@ import { Button } from "@chakra-ui/react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
-import DeleteButton from "./Ui";
 
 export const metadata: Metadata = {
   title: "Bhakti Site",
@@ -20,12 +19,8 @@ const getUser = async (user_id?: string) => {
   return user;
 };
 
-const User = async ({ params, searchParams }: IPageProps<{}>) => {
-
-
-  return (
-    
-  );
+const User = () => {
+  return <div>User</div>;
 };
 
 export default User;

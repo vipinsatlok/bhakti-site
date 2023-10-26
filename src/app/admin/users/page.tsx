@@ -40,7 +40,7 @@ const Users = async ({ params, searchParams }: TSearchParams) => {
       <div className="flex justify-between">
         <h1>Users</h1>
         <div>
-          <DownloadData action={action} />
+          <DownloadData />
           <Link className="ml-1" href={"/admin/users/add"}>
             <Button fontSize={"xs"} size={"xs"}>
               ADD

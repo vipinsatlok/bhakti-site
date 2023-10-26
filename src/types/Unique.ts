@@ -6,7 +6,7 @@ export interface IPageProps<SearchParams> {
 }
 
 export interface IAction {
-  action: (prev: any, data: FormData) => {};
+  action: (data: FormData) => {};
 }
 
 export interface IFormateData<Data> {

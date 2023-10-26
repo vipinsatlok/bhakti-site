@@ -1,8 +1,7 @@
 import React from "react";
 import Ui from "./Ui";
-import { loginAction } from "./action";
+import { action } from "./action";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getUser } from "@/utils/getUser";
 
@@ -14,7 +13,7 @@ const Login = async () => {
   const user = await getUser();
   if (user) return redirect("/");
 
-  return <Ui action={loginAction} />;
+  return <Ui action={action} />;
 };
 
 export default Login;

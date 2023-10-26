@@ -12,7 +12,6 @@ const Admin = async () => {
     <div className="mt-5">
       <h1>Admin Page</h1>
       <UsersSection />
-      <DownlaodData />
     </div>
   );
 };

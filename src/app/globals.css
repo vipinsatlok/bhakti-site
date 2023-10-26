@@ -7,7 +7,7 @@
 }
 
 h1 {
-  @apply text-2xl font-bold mb-5;
+  @apply text-2xl font-bold mb-4;
 }
 
 select,
@@ -16,7 +16,7 @@ input {
 }
 
 h2 {
-  @apply text-xl font-bold mb-4;
+  @apply text-xl font-bold mb-3;
 }
 
 .list-main {

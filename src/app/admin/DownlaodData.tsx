@@ -2,21 +2,32 @@
 
 import { Button } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { saveAs } from "file-saver";
 
 const DownloadData = ({ fileName }: { fileName: string }) => {
   const [state, setState] = useState("Downlaod");
 
   const onClick = async () => {
-    setState("Downloading...");
-    const res = await fetch("/api/getFile", {
+    setState("Genrating...");
+    const res = await fetch("/api/add", {
       headers: { fileName },
     });
-    const { data } = await res.json();
-    const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+    const data = await res.json();
 
-    saveAs(blob, fileName);
+    setState("Downloading...");
+
+    const a = document.createElement("a");
+    // document.body.appendChild(a);
+
+    a.href = "/users.json";
+    a.download;
+    // a.click()
+
     setState("Download");
+
+    const resDelete = await fetch("/api/delete", {
+      headers: { fileName },
+    });
+    await resDelete.json();
   };
 
   return (

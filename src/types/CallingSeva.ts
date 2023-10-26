@@ -1,4 +1,4 @@
-export interface ICallingData{
+export interface ICallingData {
   user_id: string;
   id: string;
   type: "video" | "audio";
@@ -6,6 +6,12 @@ export interface ICallingData{
   shift: "morning" | "noon" | "evening" | "night";
   location: string;
   index?: number;
+}
+
+export interface ISearchParams {
+  shift?: string;
+  type?: string;
+  page?: number;
 }
 
 // export interface ICallingData {
