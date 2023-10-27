@@ -12,6 +12,8 @@ export const action = async (data: FormData) => {
   const email = data.get("email");
   const password = data.get("password");
 
+  console.log("start")
+
   if (!email || !password) return;
 
   const usersData = await JSONFile.read<IUserData>(DATAFOLDER + "users.json");
@@ -26,5 +28,6 @@ export const action = async (data: FormData) => {
   cookieStore.set("token", token, { httpOnly: true, secure: true });
   cookieStore.set("auth", "true", { httpOnly: true, secure: true });
 
+  console.log("done")
   redirect("/");
 };
