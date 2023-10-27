@@ -7,7 +7,6 @@
     "naamdanDate": "01-02-30003",
     "role": "admin"
   },
-  { "name": "sas", "email": "sas", "password": "sas", "role": "user", "id": 2 },
   {
     "name": "Sachin das",
     "email": "vipinsatlok@gmail.com",
@@ -15,12 +14,11 @@
     "role": "user",
     "id": 3
   },
-  { "name": "", "email": "", "password": "", "role": "user", "id": 4 },
   {
-    "name": "asasa",
-    "email": "sas",
-    "password": "sasasa",
+    "name": "Amit Das",
+    "email": "vipindas@gmail.com",
+    "password": "022",
     "role": "user",
-    "id": 5
+    "id": 4
   }
 ]
